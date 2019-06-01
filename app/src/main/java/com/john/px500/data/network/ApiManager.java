@@ -40,7 +40,7 @@ public class ApiManager {
 
     private PixelServer api;
 
-    public ApiManager() {
+    private ApiManager() {
         Gson gson = new GsonBuilder()
                 .setDateFormat(DATE_FORMAT_STRING)
                 .create();

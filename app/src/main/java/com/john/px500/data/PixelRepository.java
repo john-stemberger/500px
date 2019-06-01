@@ -33,10 +33,19 @@ public class PixelRepository {
         }
     }
 
+    private static PixelRepository INSTANCE;
+
+    public static PixelRepository getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new PixelRepository();
+        }
+        return INSTANCE;
+    }
+
     private ExecutorService backgroundService;
     private MutableLiveData<List<Photo>> photos;
 
-    public PixelRepository() {
+    private PixelRepository() {
         backgroundService = Executors.newSingleThreadExecutor();
     }
 

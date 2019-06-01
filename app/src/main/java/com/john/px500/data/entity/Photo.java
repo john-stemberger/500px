@@ -80,4 +80,15 @@ public class Photo {
     private List<String> imageUrl; // why is this an array?
     private String url;
     private User user;
+
+    public String getImageUrl() {
+        if (imageUrl != null && imageUrl.size() > 0) {
+            return imageUrl.get(0);
+        }
+        return null;
+    }
+
+    public String getName() {
+        return name;
+    }
 }
