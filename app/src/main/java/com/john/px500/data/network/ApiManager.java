@@ -29,6 +29,15 @@ public class ApiManager {
     private static final String VERSION = "v1/";
     private static final String API_HOST = "https://api.500px.com/" + VERSION;
 
+    private static ApiManager INSTANCE;
+
+    public static ApiManager getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new ApiManager();
+        }
+        return INSTANCE;
+    }
+
     private PixelServer api;
 
     public ApiManager() {

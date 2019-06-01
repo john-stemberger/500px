@@ -21,6 +21,10 @@ public class PhotosResponse {
 
     private List<Photo> photos;
 
+    public List<Photo> getPhotos() {
+        return photos;
+    }
+
     @Override
     public String toString() {
         return "PhotosResponse{" +
