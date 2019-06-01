@@ -52,3 +52,8 @@ Feel free to choose the direction you want take (or even do both if you have ext
 1. Activity/Fragment ViewModel to persist data across orientation state changes.
 1. LiveData? for repository interactions
 1. Retrofit for network requests.
+
+
+# Compile Instructions
+1. please insure that android studio is up to date and gradle is also up to date.
+1. under your system level .gradle directory (usually in ~/.gradle/) and either add or edit the `gradle.properties` file to include the `api_key` value. This ensures the the api key is never committed
