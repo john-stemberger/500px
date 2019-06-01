@@ -23,6 +23,8 @@ Showcase Popular photos from 500px. Specifically, it should show photos in our â
 1. Does not support an offline mode.
 1. Filters are available for the popular category. Going to exclude this for this test.
 1. popular page seems to have 2 separate pull to refresh layouts. one that lives under the collapsible toolbar and one that lives above it. Looks to be a glitch.
+1. Not sure of the layout for tablets but I think it would be odd visually to use the master/details in this case given the really nice nature of the listing page.
+   As such I am not going to use the Master/Details flow for this. We can still support different layouts for tablet but for now I am going to focus on phones
 
 # Task 2 - Photo Details
 When user clicks on a photo on the grid, a full screen version of the photo should be displayed along with more detailed information about the photo, such as its title, description, and any other data you think might be useful to display.
