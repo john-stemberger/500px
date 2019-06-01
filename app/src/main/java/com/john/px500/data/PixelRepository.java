@@ -1,6 +1,6 @@
 package com.john.px500.data;
 
-import android.arch.lifecycle.LiveData;
+import androidx.lifecycle.LiveData;
 
 public class PixelRepository {
 

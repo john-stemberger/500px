@@ -1,6 +1,6 @@
 package com.john.px500;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.john.px500.ui.main.MainFragment;

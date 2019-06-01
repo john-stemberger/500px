@@ -1,7 +1,8 @@
 package com.john.px500.data.network;
 
-import android.support.annotation.NonNull;
 import android.util.Log;
+
+import androidx.annotation.NonNull;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -29,7 +30,6 @@ public class ApiManager {
     private static final String API_HOST = "https://api.500px.com/" + VERSION;
 
     private PixelServer api;
-
 
     public ApiManager() {
         Gson gson = new GsonBuilder()
