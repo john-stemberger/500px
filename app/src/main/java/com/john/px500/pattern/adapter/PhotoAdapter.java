@@ -9,11 +9,23 @@ import com.john.px500.R;
 import com.john.px500.pattern.BaseComponentAdapter;
 import com.john.px500.pattern.BaseComponentViewHolder;
 import com.john.px500.pattern.photo.PhotoViewHolder;
+import com.john.px500.pattern.photo.PhotoViewModel;
 
-public class PhotoAdapter extends BaseComponentAdapter {
+public abstract class PhotoAdapter extends BaseComponentAdapter {
     public static final int COMPONENT_TYPE_PHOTO_TALL = getNextViewType();
     public static final int COMPONENT_TYPE_PHOTO_MEDIUM = getNextViewType();
     public static final int COMPONENT_TYPE_PHOTO_SHORT = getNextViewType();
+
+
+    private PhotoViewModel.PhotoClickListener photoViewModelListener;
+
+    public void setSeriesViewModelListener(PhotoViewModel.PhotoClickListener photoViewModelListener) {
+        this.photoViewModelListener = photoViewModelListener;
+    }
+
+    public PhotoViewModel.PhotoClickListener getPhotoViewModelListener() {
+        return photoViewModelListener;
+    }
 
     @NonNull
     @Override

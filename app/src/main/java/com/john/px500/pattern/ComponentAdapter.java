@@ -27,4 +27,13 @@ public class ComponentAdapter extends PhotoAdapter {
     public BaseComponentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return super.onCreateViewHolder(parent, viewType);
     }
+
+    @Override
+    public final void onBindViewHolder(@NonNull BaseComponentViewHolder holder, int position) {
+        ComponentViewModel model = mViewModels.get(position);
+        model.bind(holder);
+        model.bindActionListeners(this);
+    }
+
+
 }

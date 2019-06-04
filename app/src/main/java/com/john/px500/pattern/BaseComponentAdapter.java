@@ -48,7 +48,7 @@ public abstract class BaseComponentAdapter extends RecyclerView.Adapter<BaseComp
     }
 
 
-    private List<ComponentViewModel> mViewModels;
+    protected List<ComponentViewModel> mViewModels;
 
     public BaseComponentAdapter() {
     }
@@ -64,12 +64,6 @@ public abstract class BaseComponentAdapter extends RecyclerView.Adapter<BaseComp
         // this is gonna cause a crash eventually anyway is the system requires a non null view holder
         // and we just cant create one for this type.
         throw new IllegalArgumentException("Unknown View type detected [" + viewType + "]. Should range between 0 and " + sLastViewType);
-    }
-
-    @Override
-    public final void onBindViewHolder(@NonNull BaseComponentViewHolder holder, int position) {
-        ComponentViewModel model = mViewModels.get(position);
-        model.bind(holder);
     }
 
     @Override

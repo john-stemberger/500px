@@ -45,4 +45,7 @@ public abstract class ComponentViewModel<T extends BaseComponentViewHolder> {
         // no-op
     }
 
+    public void bindActionListeners(ComponentAdapter componentAdapter) {
+        // no-op
+    }
 }
