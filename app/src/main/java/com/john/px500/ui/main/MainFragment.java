@@ -7,23 +7,23 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.john.px500.R;
-import com.john.px500.data.entity.Photo;
 import com.john.px500.pattern.ComponentAdapter;
 import com.john.px500.pattern.ComponentViewModel;
-import com.john.px500.pattern.photo.PhotoViewModel;
+import com.john.px500.pattern.decoration.MarginDecoration;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainFragment extends Fragment
-        implements Observer<List<Photo>> {
+        implements Observer<List<ComponentViewModel>> {
 
     private MainViewModel viewModel;
     private RecyclerView list;
@@ -39,10 +39,18 @@ public class MainFragment extends Fragment
                              @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.main_fragment, container, false);
         list = root.findViewById(R.id.photo_list);
-        // TODO: replace with a new layout manager
-        list.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        // All the images the api returns seems to be square and quite low rez. I am just gonna use a grid layout manager for now
+        // ideally I would use a custom layout manager to provide the nice staggered width format the app gives
+        list.setLayoutManager(new GridLayoutManager(getContext(), MainViewModel.GRID_SPAN_COUNT));
         adapter = new ComponentAdapter();
+        list.addItemDecoration(new MarginDecoration());
         list.setAdapter(adapter);
+
+        Toolbar toolbar = (Toolbar) root.findViewById(R.id.toolbar);
+        AppCompatActivity activity = (AppCompatActivity) getActivity();
+        activity.setSupportActionBar(toolbar);
+        activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         return root;
     }
 
@@ -57,17 +65,9 @@ public class MainFragment extends Fragment
      * Observer<List<Photo>>
      */
     @Override
-    public void onChanged(List<Photo> photos) {
-        if (photos != null) {
-            List<ComponentViewModel> models = new ArrayList<>();
-            // convert the photos to view models
-            for (Photo p : photos) {
-                PhotoViewModel model = new PhotoViewModel(ComponentAdapter.COMPONENT_TYPE_PHOTO_TALL);
-                model.setPhoto(p);
-                model.setThumbnail(p.getImageUrl(), p.getName());
-                models.add(model);
-            }
-            adapter.setViewModels(models);
+    public void onChanged(List<ComponentViewModel> componentViewModels) {
+        if (componentViewModels != null) {
+            adapter.setViewModels(componentViewModels);
             adapter.notifyDataSetChanged();
         } else {
             // add a zero case because we were not able to load photos.

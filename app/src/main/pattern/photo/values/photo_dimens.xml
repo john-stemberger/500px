@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="photo_height_short">100dp</dimen>
+    <dimen name="photo_height_short">50dp</dimen>
     <dimen name="photo_height_medium">150dp</dimen>
     <dimen name="photo_height_tall">250dp</dimen>
 
